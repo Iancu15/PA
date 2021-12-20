@@ -1,0 +1,84 @@
+d(S) = 0; d(A) = INF; d(B) = INF; d(C) = INF; d(D) = INF
+Se presepune efectuata prima relaxare, apoi trebuie efectuate
+cele |V| - 1 = 5 - 1 = 4 relaxari pentru toate muchiile:
+a) w(S, A) = 7
+b) w(S, D) = 6
+c) w(A, B) = 9
+d) w(A, C) = -3
+e) w(B, S) = 2
+f) w(B, C) = 7
+g) w(C, D) = -2
+h) w(D, B) = -4
+i) w(D, A) = 8
+j) w(D, C) = 5
+
+1.
+a) d(S) + w(S, A) = 0 + 7 = 7 < d(A) = INF => d(A) = 7
+b) d(S) + w(S, D) = 0 + 6 = 6 < d(D) = INF => d(D) = 6
+c) d(A) + w(A, B) = 7 + 9 = 16 < d(B) = INF => d(B) = 16
+d) d(A) + w(A, C) = 7 - 3 = 4 < d(C) = INF => d(C) = 4
+e) d(B) + w(B, S) = 16 + 2 = 18 > d(S) = 0 => d(S) = 0
+f) d(B) + w(B, C) = 16 + 7 = 23 > d(C) = 4 => d(C) = 4
+g) d(C) + w(C, D) = 4 - 2 = 2 < d(D) = 6 => d(D) = 2
+h) d(D) + w(D, B) = 2 - 4 = -2 < d(B) = 16 => d(B) = -2
+i) d(D) + w(D, A) = 2 + 8 = 10 > d(A) = 7 => d(A) = 7
+j) d(D) + w(D, C) = 2 + 5 = 7 > d(C) = 4 => d(C) = 4
+d(S) = 0; d(A) = 7; d(B) = -2; d(C) = 4; d(D) = 2
+
+2.
+a) d(S) + w(S, A) = 0 + 7 = 7 = d(A) = 7 => d(A) = 7
+b) d(S) + w(S, D) = 0 + 6 = 6 > d(D) = 2 => d(D) = 2
+c) d(A) + w(A, B) = 7 + 9 = 16 > d(B) = -2 => d(B) = -2
+d) d(A) + w(A, C) = 7 - 3 = 4 = d(C) = 4 => d(C) = 4
+e) d(B) + w(B, S) = -2 + 2 = 0 = d(S) = 0 => d(S) = 0
+f) d(B) + w(B, C) = -2 + 7 = 5 > d(C) = 4 => d(C) = 4
+g) d(C) + w(C, D) = 4 - 2 = 2 = d(D) = 2 => d(D) = 2
+h) d(D) + w(D, B) = 2 - 4 = -2 = d(B) = -2 => d(B) = -2
+i) d(D) + w(D, A) = 2 + 8 = 10 > d(A) = 7 => d(A) = 7
+j) d(D) + w(D, C) = 2 + 5 = 7 > d(C) = 4 => d(C) = 4
+d(S) = 0; d(A) = 7; d(B) = -2; d(C) = 4; d(D) = 2
+
+3.
+a) d(S) + w(S, A) = 0 + 7 = 7 = d(A) = 7 => d(A) = 7
+b) d(S) + w(S, D) = 0 + 6 = 6 > d(D) = 2 => d(D) = 2
+c) d(A) + w(A, B) = 7 + 9 = 16 > d(B) = -2 => d(B) = -2
+d) d(A) + w(A, C) = 7 - 3 = 4 = d(C) = 4 => d(C) = 4
+e) d(B) + w(B, S) = -2 + 2 = 0 = d(S) = 0 => d(S) = 0
+f) d(B) + w(B, C) = -2 + 7 = 5 > d(C) = 4 => d(C) = 4
+g) d(C) + w(C, D) = 4 - 2 = 2 = d(D) = 2 => d(D) = 2
+h) d(D) + w(D, B) = 2 - 4 = -2 = d(B) = -2 => d(B) = -2
+i) d(D) + w(D, A) = 2 + 8 = 10 > d(A) = 7 => d(A) = 7
+j) d(D) + w(D, C) = 2 + 5 = 7 > d(C) = 4 => d(C) = 4
+d(S) = 0; d(A) = 7; d(B) = -2; d(C) = 4; d(D) = 2
+
+4.
+a) d(S) + w(S, A) = 0 + 7 = 7 = d(A) = 7 => d(A) = 7
+b) d(S) + w(S, D) = 0 + 6 = 6 > d(D) = 2 => d(D) = 2
+c) d(A) + w(A, B) = 7 + 9 = 16 > d(B) = -2 => d(B) = -2
+d) d(A) + w(A, C) = 7 - 3 = 4 = d(C) = 4 => d(C) = 4
+e) d(B) + w(B, S) = -2 + 2 = 0 = d(S) = 0 => d(S) = 0
+f) d(B) + w(B, C) = -2 + 7 = 5 > d(C) = 4 => d(C) = 4
+g) d(C) + w(C, D) = 4 - 2 = 2 = d(D) = 2 => d(D) = 2
+h) d(D) + w(D, B) = 2 - 4 = -2 = d(B) = -2 => d(B) = -2
+i) d(D) + w(D, A) = 2 + 8 = 10 > d(A) = 7 => d(A) = 7
+j) d(D) + w(D, C) = 2 + 5 = 7 > d(C) = 4 => d(C) = 4
+d(S) = 0; d(A) = 7; d(B) = -2; d(C) = 4; d(D) = 2
+
+Dupa ce s-au realizat cele 4 relaxari se mai face o relaxare.
+
+5.
+a) d(S) + w(S, A) = 0 + 7 = 7 = d(A) = 7 => d(A) = 7
+b) d(S) + w(S, D) = 0 + 6 = 6 > d(D) = 2 => d(D) = 2
+c) d(A) + w(A, B) = 7 + 9 = 16 > d(B) = -2 => d(B) = -2
+d) d(A) + w(A, C) = 7 - 3 = 4 = d(C) = 4 => d(C) = 4
+e) d(B) + w(B, S) = -2 + 2 = 0 = d(S) = 0 => d(S) = 0
+f) d(B) + w(B, C) = -2 + 7 = 5 > d(C) = 4 => d(C) = 4
+g) d(C) + w(C, D) = 4 - 2 = 2 = d(D) = 2 => d(D) = 2
+h) d(D) + w(D, B) = 2 - 4 = -2 = d(B) = -2 => d(B) = -2
+i) d(D) + w(D, A) = 2 + 8 = 10 > d(A) = 7 => d(A) = 7
+j) d(D) + w(D, C) = 2 + 5 = 7 > d(C) = 4 => d(C) = 4
+d(S) = 0; d(A) = 7; d(B) = -2; d(C) = 4; d(D) = 2
+
+Nu s-a realizat relaxarea niciunei muchii, lucru care
+inseamna ca graful nu are ciclu negativ => algoritmul se poate aplica
+Rezultatul este d(S) = 0; d(A) = 7; d(B) = -2; d(C) = 4; d(D) = 2

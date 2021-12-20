@@ -1,0 +1,41 @@
+1. d(A) = 0; d(B) = INF; d(C) = INF; d(D) = INF; d(E) = INF
+Q = [A] // coada minima de prioritati pentru extragere de noduri
+S = [] // set cu nodurile deja vizitate
+
+2. scot A din coada, vecinii lui sunt B si E
+a) B: d(A) + w(A, B) = 0 + 10 = 10 < d(B) = INF => d(B) = 10
+b) E: d(A) + w(A, E) = 0 + 5 = 5 < d(E) => d(E) = 5
+d(A) = 0; d(B) = 10; d(C) = INF; d(D) = INF; d(E) = 5
+Q = [B, E]
+S = [A]
+
+3. scot E din coada(min = 5), vecinii lui sunt B, C si D
+a) B: d(E) + w(E, B) = 5 + 3 = 8 < d(B) = 10 => d(B) = 8
+b) C: d(E) + w(E, C) = 5 + 9 = 14 < d(C) = INF => d(C) = 14
+c) D: d(E) + w(E, D) = 5 + 2 = 7 < d(D) = INF => d(D) = 7
+d(A) = 0; d(B) = 8; d(C) = 14; d(D) = 7; d(E) = 5
+Q = [B, C, D]
+S = [A, E]
+
+4. scot D din coada, vecinii lui sunt A si C
+a) A: d(D) + w(D, A) = 7 + 7 = 14 > d(A) = 0 => d(A) = 0
+b) C: d(D) + w(D, C) = 7 + 6 = 13 < d(C) = 14 => d(C) = 13
+d(A) = 0; d(B) = 8; d(C) = 13; d(D) = 7; d(E) = 5
+Q = [B, C]
+A = [A, E, D]
+
+5. scot B din coada, vecinii lui sunt C si E
+a) C: d(B) + w(B, C) = 8 + 1 = 9 < d(C) = 13 => d(C) = 9
+b) E: d(B) + w(B, E) = 8 + 2 = 10 > d(E) = 5 => d(E) = 5
+d(A) = 0; d(B) = 8; d(C) = 9; d(D) = 7; d(E) = 5
+Q = [C]
+A = [A, E, D, B]
+
+6. scot C din coada vecinii lui sunt A si D
+a) A: d(C) + w(C, A) = 9 + 3 = 12 > d(A) = 0 => d(A) = 0
+b) D: d(C) + w(C, D) = 9 + 4 = 13 > d(D) = 7 => d(A) = 7
+d(A) = 0; d(B) = 8; d(C) = 9; d(D) = 7; d(E) = 5
+Q = []
+A = [A, E, D, B, C]
+
+Rezultat: d(A) = 0; d(B) = 8; d(C) = 9; d(D) = 7; d(E) = 5

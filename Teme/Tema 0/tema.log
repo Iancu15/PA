@@ -1,0 +1,593 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.28)  25 APR 2021 22:39
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**tema.tex
+(./tema.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14> (./llncs.cls
+Document Class: llncs 2018/03/10 v2.20 
+ LaTeX document class for Lecture Notes in Computer Science
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count175
+\mult@box=\box45
+\multicol@leftmargin=\dimen135
+\c@unbalance=\count176
+\c@collectmore=\count177
+\doublecol@number=\count178
+\multicoltolerance=\count179
+\multicolpretolerance=\count180
+\full@width=\dimen136
+\page@free=\dimen137
+\premulticols=\dimen138
+\postmulticols=\dimen139
+\multicolsep=\skip49
+\multicolbaselineskip=\skip50
+\partial@page=\box46
+\last@line=\box47
+\maxbalancingoverflow=\dimen140
+\mult@rightbox=\box48
+\mult@grightbox=\box49
+\mult@gfirstbox=\box50
+\mult@firstbox=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\c@minrows=\count181
+\c@columnbadness=\count182
+\c@finalcolumnbadness=\count183
+\last@try=\dimen141
+\multicolovershoot=\dimen142
+\multicolundershoot=\dimen143
+\mult@nat@firstbox=\box89
+\colbreak@box=\box90
+\mc@col@check@num=\count184
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/aliascnt.sty
+Package: aliascnt 2018/09/07 v1.5 Alias counters (HO)
+)
+\c@chapter=\count185
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 365.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 366.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 367.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 368.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 369.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 370.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 371.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
+\tocchpnum=\dimen144
+\tocsecnum=\dimen145
+\tocsectotal=\dimen146
+\tocsubsecnum=\dimen147
+\tocsubsectotal=\dimen148
+\tocsubsubsecnum=\dimen149
+\tocsubsubsectotal=\dimen150
+\tocparanum=\dimen151
+\tocparatotal=\dimen152
+\tocsubparanum=\dimen153
+\@tempcntc=\count186
+\fnindent=\dimen154
+\c@@inst=\count187
+\c@@auth=\count188
+\c@auco=\count189
+\instindent=\dimen155
+\authrun=\box91
+\authorrunning=\toks14
+\tocauthor=\toks15
+\titrun=\box92
+\titlerunning=\toks16
+\toctitle=\toks17
+\c@theorem=\count190
+\c@case=\count191
+\c@conjecture=\count192
+\c@corollary=\count193
+\c@definition=\count194
+\c@example=\count195
+\c@exercise=\count196
+\c@lemma=\count197
+\c@note=\count198
+\c@problem=\count199
+\c@property=\count266
+\c@proposition=\count267
+\c@question=\count268
+\c@solution=\count269
+\c@remark=\count270
+\headlineindent=\dimen156
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen157
+\Gin@req@width=\dimen158
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen159
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen160
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count271
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count272
+\leftroot@=\count273
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count274
+\DOTSCASE@=\count275
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box93
+\strutbox@=\box94
+\big@size=\dimen161
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count276
+\c@MaxMatrixCols=\count277
+\dotsspace@=\muskip16
+\c@parentequation=\count278
+\dspbrk@lvl=\count279
+\tag@help=\toks20
+\row@=\count280
+\column@=\count281
+\maxfields@=\count282
+\andhelp@=\toks21
+\eqnshift@=\dimen162
+\alignsep@=\dimen163
+\tagshift@=\dimen164
+\tagwidth@=\dimen165
+\totwidth@=\dimen166
+\lineht@=\dimen167
+\@envbody=\toks22
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
+\langwohyphens=\language3
+LaTeX Info: Redefining \_ on input line 43.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip54
+\enit@outerparindent=\dimen168
+\enit@toks=\toks24
+\enit@inbox=\box95
+\enit@count@id=\count283
+\enitdp@description=\count284
+)
+(/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write3
+
+Excluding comment 'comment')
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/pifont.sty
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count285
+\lst@gtempboxa=\box96
+\lst@token=\toks25
+\lst@length=\count286
+\lst@currlwidth=\dimen169
+\lst@column=\count287
+\lst@pos=\count288
+\lst@lostspace=\dimen170
+\lst@width=\dimen171
+\lst@newlines=\count289
+\lst@lineno=\count290
+\lst@maxwidth=\dimen172
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
+\c@lstnumber=\count291
+\lst@skipnumbers=\count292
+\lst@framebox=\box97
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2019/09/10 1.8c listings configuration
+))
+Package: listings 2019/09/10 1.8c (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/09/10 1.8c listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/09/10 1.8c listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count293
+\l__pdf_internal_box=\box98
+)
+(./tema.aux)
+\openout1 = `tema.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count294
+\scratchdimen=\dimen173
+\scratchbox=\box99
+\nofMPsegments=\count295
+\nofMParguments=\count296
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count297
+\MPscratchDim=\dimen174
+\MPnumerator=\count298
+\makeMPintoPDFobject=\count299
+\everyMPtoPDFconversion=\toks27
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\c@lstlisting=\count300
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 6
+2.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 62.
+
+Overfull \hbox (7.65488pt too wide) in paragraph at lines 93--94
+[]\OT1/cmr/m/n/10 Intotdeauna se va merge pe o sin-gura ra-mura o data con-form
+ unei im-ple-men-tari
+ []
+
+[2]
+Overfull \hbox (9.23824pt too wide) in paragraph at lines 138--141
+\OT1/cmr/m/n/10 frac-tie egipteana e un mod de a reprezenta frac-ti-ile folosin
+d doar uni-tati frac-tionare.
+ []
+
+[3]
+Overfull \hbox (4.84935pt too wide) in paragraph at lines 169--171
+\OT1/cmr/m/n/10 tes-tam daca nu-marul se in-cadreaza intr-o an-u-mita tol-er-an
+ta prim-ita ca parametru: 
+ []
+
+[4]
+Overfull \hbox (7.57162pt too wide) in paragraph at lines 194--199
+\OT1/cmr/m/n/10 uni-tatii frac-tionare ca in vari-anta an-te-rioara, iar mai ap
+oi se ac-tu-al-izeaza nu-mi-torul
+ []
+
+
+Overfull \hbox (7.43271pt too wide) in paragraph at lines 194--199
+\OT1/cmr/m/n/10 nu-mara-toru-lui, se aduce frac-tia an-te-rioara si uni-tatea f
+rac-tionara la ace-lasi nu-mi-tor
+ []
+
+
+Overfull \hbox (1.4049pt too wide) in paragraph at lines 204--205
+[]\OT1/cmr/m/n/10 Varianta a doua func-tioneaza ex-act, insa este lim-i-tata de
+ di-men-si-unea max-ima
+ []
+
+
+Overfull \hbox (13.15488pt too wide) in paragraph at lines 206--210
+\OT1/cmr/m/n/10 frac-tionare, pen-tru ca se efectueaza 3 op-er-atii O(1) pen-tr
+u fiecare uni-tate frac-tionara
+ []
+
+
+Overfull \hbox (0.46046pt too wide) in paragraph at lines 211--216
+\OT1/cmr/m/n/10 fi-ind frac-tia ur-ma-toarei it-er-atii. Ast-fel dupa cal-cu-la
+rea op-ti-m-u-lui lo-cal se sat-is-face
+ []
+
+[5]
+Overfull \hbox (6.15027pt too wide) in paragraph at lines 247--248
+[]\OT1/cmr/m/n/10 numitorul frac-tiei uni-tate - $\OML/cmm/m/it/10 ciel\OT1/cmr
+/m/n/10 ([]) = 468$ $ =[]\OMS/cmsy/m/n/10 ) $ \OT1/cmr/m/n/10 a treia uni-tate 
+frac-tionara
+ []
+
+
+Overfull \hbox (33.87718pt too wide) in paragraph at lines 256--261
+\OT1/cmr/m/n/10 nu-mar cata-lan. Nu-merele cata-lane apar intr-o mul-ti-tu-dine
+ de prob-leme de com-bi-na-tor-ica.
+ []
+
+
+Overfull \hbox (3.98705pt too wide) in paragraph at lines 256--261
+\OT1/cmr/m/n/10 Spre ex-em-plu nu-marul de ar-bori bi-nari de cautare posi-bili
+ cu N chei este echiva-lent
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 290--293
+
+ []
+
+[7] [8]
+Overfull \hbox (2.52762pt too wide) in paragraph at lines 375--377
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[9]
+Overfull \hbox (10.0159pt too wide) in paragraph at lines 412--414
+\OT1/cmr/m/n/10 apeluri re-cur-sive si vari-abilele afer-ente prezente pe stiva
+, acest lu-cru intamplandu-se
+ []
+
+[10]
+Overfull \hbox (4.96054pt too wide) in paragraph at lines 510--518
+\OT1/cmr/m/n/10 ex-po-nen-tial, atunci al-go-rit-mul par-alel ar avea per to-ta
+l o com-plex-i-tate log-a-r-it-mica.
+ []
+
+[11]
+Overfull \hbox (0.93246pt too wide) in paragraph at lines 533--538
+\OT1/cmr/m/n/10 este de preferat sa fie folosit acesta pen-tru ca nu este supra
+in-car-cat de o pre-lu-crare
+ []
+
+
+Overfull \hbox (4.90482pt too wide) in paragraph at lines 539--544
+\OT1/cmr/m/n/10 mem-o-rizarii con-form careia se stocheaza toti pasii cal-cu-la
+ti din re-la-tia de re-curenta
+ []
+
+[12]
+Overfull \hbox (5.90483pt too wide) in paragraph at lines 558--562
+\OT1/cmr/m/n/10 op-er-a-tia de back-track-ing care in-toarce al-go-rit-mul de f
+iecare data la pa-sul prece-dent
+ []
+
+
+Overfull \hbox (20.54372pt too wide) in paragraph at lines 563--568
+\OT1/cmr/m/n/10 per-mu-tari. Deza-van-ta-jul este ca gener-area de per-mu-tari 
+duce de-se-ori la o com-plex-i-tate
+ []
+
+
+Overfull \hbox (6.96045pt too wide) in paragraph at lines 577--586
+\OT1/cmr/m/n/10 ruc-sac-u-lui. Pe de alta parte, prob-lema s-ar mai putea re-zo
+lva folosind back-track-ing,
+ []
+
+[13]
+Overfull \hbox (1.79381pt too wide) in paragraph at lines 610--619
+[]\OT1/cmr/m/n/10 Totusi prob-lema mai poate fi re-zol-vata folosind pro-gra-ma
+re di-nam-ica si anume
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--623
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 624--626
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 627--629
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 630--632
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 633--635
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 636--638
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 639--641
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 642--644
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 645--646
+
+ []
+
+[15] (./tema.aux) ) 
+Here is how much of TeX's memory you used:
+ 5052 strings out of 483183
+ 66972 string characters out of 5966292
+ 513380 words of memory out of 5000000
+ 20008 multiletter control sequences out of 15000+600000
+ 539992 words of font info for 53 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 34i,12n,60p,221b,1382s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/alex/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen
+/ec/tcrm0900.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
+12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on tema.pdf (15 pages, 202956 bytes).
+PDF statistics:
+ 122 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,60 @@
+1. Divide et impera:
+Calculul x^n si cautare binara => theta(log n)
+Turnurile din hanoi => theta(2^n)
+ClosestPair 1D si 2D => O(nlogn)
+Cautare sau inserare intr-un arbore de cautare => O(logn)
+
+2. Greedy:
+Huffman => O(nlogn)
+
+3. PD
+Chain Matrix Multiplication => O(n^3) temporal, theta(n^2) spatial
+AOC => temporala O(n^3)
+AOC cu Knuth => temporal O(n^2)
+
+4. bkt si restrictii
+a = lung maxima dintre domenii, r = nr restrictii binare, n = nr variabile = nr restrictii unare
+NC-1 => O(n*a)
+REVISE => O(a^2)
+AC-1 => O(n*r*a^3)
+AC-3 => O(r*a^3)
+
+5. Parcurgeri
+DFS, BFS => O(m + n)
+topsort => 1 DFS
+Kosaraju pt CTC => 2 DFS
+Algoritm puncte de articulatie, punti, CTC cu Tarjan => 1 DFS
+
+6. Drumuri de cost minim
+Dijkstra -> vectori/matrice de adiacenta O(V^2)
+         -> coada de prioritati/heap binar O(ElogV)
+         -> heap fibonacci O(VlogV + E)
+Bellman-Ford -> O(V*E)
+Floyd-Warshall -> temporal O(V^3), spatial O(V^2)
+Johnson -> O(V^2*logV + V*E)
+
+7. AMA
+Prim -> Dijkstra
+Kruskal -> O(ElogV)
+
+8. Fluxuri
+Ford-Fulkerson -> O(E*fmax)
+Edmonds-Karp -> O(E^2*V)
+Pompare preflux -> O(V^2*E)
+
+9. Algoritmi euristici
+b - branching factor, d - depth
+Gradient maxim -> O(b*d)
+BF* -> O(b^(d+1))
+A* -> liniara daca |h*(n) - h(n)| < constanta
+   -> subexponentiala daca |h*(n) - h(n)| < O(log(h*(n))
+   -> exponentiala altfel
+
+10. Minmax
+Minmax normal -> b^d
+alfa-beta -> b^(d/2)
+
+11. Algoritmi aleatori
+Las Vegas secventa de linii -> O(lg n)
+Monte Carlo numar prim Miller-Rabin -> O(lg^2(n))
+                                    -> numar de biti O(k^2)

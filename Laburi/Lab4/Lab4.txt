@@ -1,0 +1,136 @@
+# Iancu Alexandru-Gabriel 324CD
+
+Ex 1:
+
+Relatia de recurenta SSM(k) = max(SSM(k - 1) + A[k], A[k]), pt k = 1
+                                                          , unde SSM(1) = A[1]
+
+Exemplu: vectorul de 7 elem [5 -6 3 4 -2 3 -3] indexat de la 1
+SSM(1) = A[1] = 5 // [5]
+SSM(2) = max(SSM(1) + A[2], A[2]) = max(5 - 6, -6) = max(-1, -6) = -1 // [5 -6]
+SSM(3) = max(SSM(2) + A[3], A[3]) = max(-1 + 3, 3) = max(2, 3) = 3 // [3]
+SSM(4) = max(SSM(3) + A[4], A[4]) = max(3 + 4, 4) = max(7, 4) = 7 // [3 4]
+SSM(5) = max(SSM(4) + A[5], A[5]) = max(7 - 2, -2) = max(5, -2) = 5 // [3 4 -2]
+SSM(6) = max(SSM(5) + A[6], A[6]) = max(5 + 3, 3) = max(8, 3) = 8 // [3 4 -2 3]
+SSM(7) = max(SSM(6) + A[7], A[7]) = max(8 - 3, -3) = max(5, -3) = 5 // [3 4 -2 3 -3]
+
+Rezultat: Max(SSM(1), SSM(2), ... SSM(7)) = SSM(6) = 8, cu solutia [3 4 -2 3]
+
+Pentru a construi solutia trebuie salvat pentru fiecare SSM subsecventa.
+Acest lucru s-ar putea face cu o structura:
+
+typedef struct {
+    int sum;
+    int length;
+    int* elements; // elements se indexeaza de la 1
+}SSM;
+
+Astfel pentru SSM(1) vom avea:
+{
+    sum = A[1] = 5;
+    length = 1;
+    elements = malloc(sizeof(int));
+    elements[1] = A[1] = 5;
+}
+
+Pentru SSM(k) vom avea:
+{
+    if (SSM(k-1).sum + A[k] > A[k]) {
+        sum = SSM(k-1).sum + A[k];
+        length = SSM(k-1).length + 1;
+        elements = malloc(length * sizeof(int));
+        // se copiaza cu un for cele (length - 1) elemente din SSM(k - 1) in elements
+        elements[length] = A[k];
+    } else {
+        sum = A[k];
+        length = 1;
+        elements = malloc(sizeof(int));
+        elements[1] = A[k];
+    }
+}
+
+Ex 2:
+
+Relatia de recurenta:
+    dp[i][0] = dp[0][g] = 0, oricare ar fi i si g din multimile aferente
+    dp[i][g] = max(dp[i - 1][g], dp[i - 1][g - weight(g)] + profit[i]), pentru i > 0
+    , unde g >= weight(g) pentru a se intra pe cazul 2
+
+Exemplu: 6 obiecte ce trebuie puse intr-un rucsac de capacitate 10
+        weight = [3 3 1 1 2 1]
+        profit = [7 4 2 9 4 5]
+
+Matrix (facuta folosind formula de recurenta):
+    [0  1  2  3  4  5  6  7  8  9  10]
+[0   0  0  0  0  0  0  0  0  0  0  0
+ 1   0  0  0  7  7  7  7  7  7  7  7 <- doar in functie de (3 7), val 7 pt toate weight >= 3
+ 2   0  0  0  7  7  7 11 11 11 11 11 <- (3 4), 4 < 7 asa ca se adauga pt weight >= 6
+ 3   0  2  2  7  9  9 11 13 13 13 13 <- (1 2), se adauga unde se poate
+ 4   0  9 11 11 16 18 18 20 22 22 22 <- (1 9), inlocuieste restul care se adauga dupa daca e loc
+ 5   0  9 11 13 16 18 20 22 22 24 26 <- (2 4), inlocuieste uneori (1 2) si (3 4) 
+ 6   0  9 14 16 18 21 23 25 27 27 29 <- (1 5), inlocuieste mai multe
+  ]
+
+Rezultatul este: dp[6][10] = 29
+
+Pentru a construi solutia ne folosim de matrice, presupunem ca stim
+ce obiect am adaugat la fiecare linie(ce e in dreapta lui <-).
+
+{
+    int i = 6;
+    int g = 10
+    int lst_objects = malloc(total_nr_of_objects * sizeof(int));
+    int objects_counter = 0;
+    while(i > 0) {
+        int object = obiectul de la linia i
+
+        // daca s-a schimbat valoarea inseamna ca obiectul curent 
+        // a fost adaugat
+        // din definitia matricei, daca cele 2 sunt diferite inseamna
+        // ca dp[i][g] > dp[i - 1][g] asa ca nu trb sa verific explicit
+        if (dp[i][g] != dp[i - 1][g]) {
+            lst_objects.add(object);
+            g -= object.weight;
+        }
+
+        // daca nu s-a schimbat inseamna ca trebuie sa verific la linia precedenta
+        i--;
+    }
+}
+
+Determinarea listei conform programului:
+{i g} = {6 10}
+dp[6][10] = 29 != dp[5][10] = 26 => lst = [(1 5)]
+
+{6-1 10-1} = {5 9}
+dp[5][9] = 24 != dp[4][9] = 22 => lst = [(1 5) (2 4)]
+
+{4 9-2} = {4 7}
+dp[4][7] = 20 != dp[3][7] = 13 => lst = [(1 5) (2 4) (1 9)]
+
+{3 6}
+dp[3][6] = 11 = dp[2][6] => lst = [(1 5) (2 4) (1 9)]
+                            nu se adauga (1 2)
+
+{2 6}
+dp[2][6] = 11 != dp[1][6] = 7 => lst = [(1 5) (2 4) (1 9) (3 4)]
+
+{1 6}
+dp[1][6] = 7 != dp[0][6] = 0 => lst = [(1 5) (2 4) (1 9) (3 4) (3 7)]
+
+i = 0 se iese din while, rezultat: [(1 5) (2 4) (1 9) (3 4) (3 7)]
+
+Cum s-ar putea optimiza spatial problema?
+
+Este destul sa tinem minte ultima linie pentru ca la fiecare iteratie
+accesam doar linia dp[i - 1].
+
+Astfel in loc sa folosim o matrice de 7 x 10 care e echivalenta spatial
+cu 7 vectori de 10 elemente, folosim 2 vectori de 10 elemente. Un vector
+continand linia precedenta si celalalt este folosit pentru a stoca linia
+curenta. La finalul iteratiei se pune linia curenta in vectorul rezervat
+pentru linia precedenta pentru a fi folosit la iteratia urmatoare.
+
+In cazul algoritmului cu matrice se foloseste theta((N + 1) * (G + 1)) =
+= theta(N * G), unde N este numarul total de obiecte si G este capacitatea
+rucsacului. In varianta optimizata se foloseste theta(2 * G) = theta(G).

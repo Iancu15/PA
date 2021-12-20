@@ -1,0 +1,277 @@
+# Iancu Alexandru-Gabriel 324CD
+
+1. Poduri
+
+A. Concept
+
+Folosesc algoritmul lui Lee prezentat la laboratorul 7 al lui Mihai Nan. In problema
+soricelului acesta poate sa mearga in oricare din cele 4 directii daca nu erau ocupate,
+pentru a putea folosi algoritmul pe problema curenta a trebuit sa impun restrictiile aferente
+podurilor. Astfel in functie de pozitia pe care se afla o sa mearga in directii diferite:
+-pod vertical: merge in sus si in jos(algoritmul merge, nu gigel, ca acesta testeaza
+toate posibilitatile)
+-pod orizontal: merge in dreapta si in stanga
+-pod dublu: merge in sus, jos, dreapta si stanga
+-pozitie fara pod: nu mai merge nicaieri
+
+Algoritmul meu in cazul in care urmatoarea pozitie este una fara pod, nu mai
+continua pe acel drum pentru ca pozitia este inaccesibila asa ca nu se
+va ajunge niciodata in cazul in care drumul se va afla pe o pozitie
+fara pod, pentru ca aceasta nu ar fi in coada in primul rand. Pentru a
+optimiza algoritmul am mai pus conditia ca drumurile care au devenit mai
+lungi decat cel mai mic drum de succes gasit pana la momentul curent sa fie ignorate.
+
+In pseudocod-ul de la laborator pozitia initiala are valoarea 1 in matrice. Insa
+in problema noastra, comparativ cu cea a soricelului, destinatia se afla inafara
+grid-ului, astfel cand algoritmul ajunge inafara nu mai incrementeaza pentru
+pozitia de scop. Asa ca am decis ca pozitia initiala sa aiba valoarea 0 pentru
+a se pastra lungimea corecta a drumului.
+
+B. Complexitate
+
+Matricea se citeste linie cu linie cu nextLine() care are complexitate
+O(W) pentru ca prelucreaza fiecare caracter din linie care e echivalentul
+unui element din matrice. Cum aceasta operatie se realizeaza pentru toate
+liniile, atunci complexitatea este O(H * W), unde H este inaltimea matricii
+si W latimea. Operatia charAt() are complexitate O(1) asa ca nu afecteaza
+complexitatea citirii.
+
+Algoritmul lui Lee are complexitate O(H * W) pentru ca prelucreaza o celula
+maxim o data si in cel mai rau acesta ar trebui sa prelucreze toate celulele
+din matrice. Inafara de operatiile uzuale(if-uri, adunari, scaderi) care
+sunt O(1), avem operatiile cozii si anume add() si poll() care sunt O(1),
+asa ca per total complexitatea parcurgerii este O(H * W).
+
+Scrierea este O(1) pentru ca se scrie doar un numar. Astfel programul are complexitate
+O(2 * H * W) = O(H * W), unde H este inaltimea matricii si W latimea matricii.
+
+2. Adrese
+
+A. Concept
+
+Aceasta problema am rezolvat-o folosind parcurgeri in graf. Intai a trebuit sa transpun
+intrarile intr-un graf. Drept intrari am o lista de persoane non-distincte fiecare
+cu cateva mail-uri diferite si trebuie sa fac rost de lista de persoane distincte cu
+mail-urile aferente. Am decis astfel sa fac un graf in care nodurile sa fie mail-urile
+si muchiile sa lege 2 mail-uri daca acestea fac parte din aceeasi persoana non-distincta.
+Asa ca un nod este vecin de gradul 1 al altui nod daca ambele fac parte din aceeasi persoana
+non-distincta.
+
+Cum vecinii de grad 1 fac parte din aceeasi persoana non-distincta (si implicit aceeasi
+persoana distincta), atunci cei de grad mai mare ca 1 vor face parte din aceeasi persoana
+distincta. Daca un nod face parte simultan din 2 sau mai multe persoane non-distincte,
+atunci este un punct de articulatie ce va face legatura dintre nodurile ce fac parte din
+aceeasi persoana distincta, dar nu fac parte din aceeasi persoana non-distincta.
+In concluzie, fiecare CC a grafului va reprezenta o persoana distincta, iar nodurile
+componentei conexe vor fi mail-urile persoanei respective. Dupa crearea grafului,
+trebuie doar sa parcurg DFS fiecare componenta conexa pentru a face rost de iesiri.
+
+B. Complexitate
+
+Pentru citirea propriu-zisa a unei linii cu readLine() avem complexitate O(N),
+unde N este numarul de caractere din linie. Pentru linia de persoane avem
+O(N) pentru split() si O(NO) pentru parseInt(), unde NO este numarul de cifre din
+numarul de mail-uri, asa ca per total are complexitatea O(N + N + NO), insa NO < N,
+asa ca putem rescrie ca O(N + N + N) = O(3 * N) = O(N). Pentru liniile de
+mail-uri aplicam doar readLine() asa ca avem complexitatea O(N). Astfel per
+total citirea tuturor liniilor este O(C), unde C este numarul total de caractere din
+intrare.
+
+Pentru fiecare persoana se proceseaza mail-urile intr-un loop. Intai se cauta
+daca exista deja un nod in graf cu mail-ul respectiv cautand in map, cautarea
+este O(1). Se mai efectueaza o adaugare, fie a nodului gasit, fie a nodului
+creat, add() in ArrayList are cost amortizat O(1), iar crearea unui nod este
+O(1). Asa ca per total crearea listei de noduri are o complexitatea
+O(M * (1 + 1 + 1)) = O(M), unde M este numarul maxim de noduri al unei persoane.
+
+Apoi pentru fiecare nod din lista de noduri se adauga toate nodurile folosind
+addAll() in lista de vecini a nodului. Metoda addAll() e influentata de
+metoda toArray() care are in general complexitate O(n), asa ca o sa consideram
+addAll() ca fiind O(n), unde n in situatia noastra sunt numarul de vecini +
+nodul curent. Am decis sa adaug si nodul in sine la vecini, pentru a nu
+mai apela remove() pe lista de noduri pentru fiecare vecin.
+Nu va face nicio diferenta in implementarea propriu-zisa
+pentru ca in momentul in care vor fi parcursi vecinii acestuia in DFS,
+nodul in sine va fi vizitat asa ca nu se va lua pe sine in considerare.
+Actualizeara persoanei si put() in map sunt ambele O(1), asa ca complexitatea
+loop-ului este O(M ^ 2), unde M este numarul maxim de mail-uri care este
+echivalent cu lungimea maxima a listei de noduri. Astfel citirea si crearea
+grafului au complexitatea cumulata de O(C) + O(P) * (O(M + M^2)) = O(C) + O(P * M^2),
+unde C este numarul total de caractere de la intrare si P numarul de persoane
+non-distincte.
+
+Complexitatea temporala a DFS-ului in mod normal este O(|V| + |E|), unde |V| sunt
+numarul de noduri si |E| numarul de muchii din graful creat. Acest lucru se pastreaza
+si pentru mai mult de 1 componenta conexa pentru ca parcurgerea CC cu index-ul i
+va avea complexitate O(|Vi| + |Ei|), asa ca complexitatea parcurgerii tuturor
+componentelor conexe va fi suma tuturor |Vi| si |Ei|, cu i in multimea indexilor
+CC-urilor. Si cum fiecare componenta conexa are noduri si muchii distincte fata
+de alte componente conexe, atunci suma va da O(|V| + |E|). Nu mai sunt functii
+care sa modifice complexitatea, toate aceste operatii sunt O(1): crearea unui
+PersonInfo, adaugarea in stack, setVisited(), pop(), compareTo() pentru String, etc.
+
+Numarul de noduri in graf este numarul de email-uri distincte asa ca in cel mai
+rau caz toate persoanele date la intrare sunt persoane distincte si astfel
+vor fi M * P noduri, unde M este numarul maxim de mail-uri al persoanelor date
+la intrare si P numarul de persoane date la intrare. Numarul de muchii e
+reprezentat de relatiile dintre mail-uri. Fiecare mail are o relatie cu
+orice alt mail care face parte din aceeasi persoana non-distincta. Astfel
+in cel mai rau caz la intrare se da o singura persoana, astfel incat toate
+mail-urile sa aiba o legatura intre ele, asa ca complexitatea ar fi
+O(M + (M - 1) + (M - 2) + .. + 1) = O(M^2), unde M este numarul maxim
+de mail-uri ale unei persoane(mai exact in cazul particular ar fi numarul
+total de mail-uri pentru ca exista o singura persoana). Asa ca parcurgerea
+dfs folosind datele de la intrare are complexitatea O(M * P + M^2).
+
+Pentru afisare se sorteaza persoanele distincte dupa numarul de mail-uri
+si nume. Functia Collections.sort() are complexitate O(n * log n), asa
+ca complexitatea sortarii ar fi O(R * log R), unde R este numarul de persoane
+distincte. Apoi pentru fiecare persoana distincta se sorteaza mail-urile
+persoanei(O(M2 * log M2), unde M2 este numarul maxim de mail-uri ale unei
+persoane distincte) si se afiseaza printr-o parcurgere a acestora de
+complexitate O(M2). Asa ca per total afisarea si prelucrarile necesare
+au complexitatea O(R * log R + R * (M2 * log M2 + M2)) =
+= O(R * log R + R * M2 * log M2).
+
+Complexitatea intregului program este astfel: O(C + P * M^2 + M * P + M^2
++ R * (logR + M2 * log M2)) = O(C + P * M^2 + R * (logR + M2 * log M2)),
+unde C este numarul total de caractere de la intrare, P numarul de persoane
+non-distincte, R numarul de persoane distincte, M numarul maxim de mail-uri
+ale unei persoane non-distincte si M2 numarul maxim de mail-uri ale persoanei
+distincte de la iesire.
+
+Obs: parcurgerea dfs este nesemnificativa din punct de vedere al complexitatii
+fata de citirea si crearea grafului: O(P * M^2) citirea si crearea, O(P * M + M^2)
+parcurgerea.
+
+3. Lego
+
+A. Concept
+
+Sunt doua parti importante in problema asta: generarea de dimensiuni si calcularea
+numerelor consecutive pentru fiecare dimensiune generata. Generarea de dimensiuni o
+fac cu backtracking, creez toate combinatiile posibile care respecta cele 2
+conditii si anume ca sunt maxim N dimensiuni posibile si fiecare dimensiune
+e mai mica sau egala cu K.
+
+Pentru calcularea numerelor consecutive trebuie intai sa calculez toate combinatiile
+posibile care se pot forma cu maxim T piese din multimea de dimensiuni generata.
+Acest lucru s-ar putea face cu inca un backtracking, insa nu sunt sigur ca s-ar
+incadra in limita de timp asa ca am ales sa folosesc programare dinamica. Trebuie
+ca pentru fiecare numar posibil sa vad daca se poate forma prin adunarea a
+T piese din multime, acest lucru se aseamana foarte mult cu subset sum. Rezolvarea
+mea este inspirata din metoda 2 de rezolvare a subset sum-ului discutata aici:
+
+https://www.geeksforgeeks.org/subset-sum-problem-dp-25/
+
+Astfel construiesc o matrice in care pe linie am fiecare element din multimea
+de dimensiuni si pe coloana am toate numerele posibile. Cum varianta cu
+programare dinamica se foloseste de memorizare aceasta va verifica toate
+combinatiile posibile, asa ca trebui doar sa fac subset sum pe ultimul numar.
+Pentru dimensiunea maxima dim_max din multimea de dimensiuni se poate forma
+ultimul numar si cel mai mare posibil folosind T piese de dimensiune dim_max
+ce va forma o suma cu valoarea T * dim_max, astfel coloanele vor merge de la 0
+pana la T * dim_max.
+
+In problema noastra, fata de subset sum, se poate folosi un element din multime
+de mai multe ori cat timp se incadreaza in maximul posibil care este T. Ca un work
+around am decis sa modific intrarea pentru subset astfel incat sa se muleze pe
+problema. Asa ca "multimea" pentru subset sum va fi formata din T copii
+pentru fiecare dimensiune, astfel acopar toate combinatiile posibile, fiecare
+dimensiune putand fi folosita de maxim T ori. Se va modifica de altfel si matricea
+ce va avea de T ori mai multe linii, avand o linie pentru fiecare element din noua
+"multime" creata. (nu e chiar multime ca elementele apar de mai multe ori)
+
+Totusi inca mai trebuie modificata intr-un fel matricea pentru ca asa nu a fost
+implementata in niciun fel restrictia cu maxim T piese. Asa ca in loc de A/F,
+am decis sa umplu matricea cu numarul de piese folosite pentru construirea
+numarului respectiv folosind toate dimensiunile pana la dimensiunea liniei
+curente inclusiv. In cazul in care nu se poate forma numarul din dimensiunile
+disponibile, atunci celula va avea valoarea -1. Astfel celulele pot avea valori
+de la -1 la T inclusiv. 0 se va folosi pentru numarul 0 care poate fi construit
+prin adunarea a 0 piese. Mai este de asemenea si linia pentru elementul neutru
+care este 0, aceasta linie inafara de cazul pentru dimensiune 0 va fi umpluta
+cu -1 pentru ca nu poti forma un numar nenul doar din numere nule.
+
+Umplerea matricii o fac top-down-right, adica construiesc pe rand pentru
+fiecare numar in parte. Acest lucru este posibil pentru ca celula se umple
+folosind informatii din linia precedenta. Motivul initial pentru care am
+umplut matricea astfel este pentru ca am inteles din enunt ca trebuie doar
+primele N numere consecutive, asa ca ma opream din umplut matricea cand
+gasesam un numar care are avea pe ultima linie -1, adica nu putea fi creat.
+Totusi intre timp s-au modificat testele si a trebuit sa fac toate combinatiile
+posibile pentru ca au inceput sa conteze si numerele consecutive care nu incep
+cu 1. Mi-a ramas de atunci umplerea top-down-right pe care n-am mai schimbat-o
+ca nu afecta in niciun fel performanta programului.
+
+B. Complexitate
+
+Pentru simplitate o sa vorbesc doar de complexitatea teoretica, adica nu iau
+in calcul complexitatea functiilor built-in din java.
+
+1 este considerata ca parte din multime implicit, asa ca incep backtracking-ul
+cu dimensiunea 2. Pentru aceasta dimensiune vor fi 2 cazuri: dimensiunea 2\
+face parte din multime sau nu face parte. Apoi se incrementeaza dimensiunea
+si ajung la 3, se bifurca din nou si se tot bifurca pe urmatoarele dimensiuni
+pana ce ajunge la dimensiunea (K + 1).
+
+dimensiunea 2 -> 1 apel de functie
+dimensiunea 3 -> 1*2 = 2 apel-uri
+dimensiunea 4 -> 2*2 = 4 apel-uri
+...
+dimensiunea (K + 1) -> 2*2...*2 = 2^(K + 1 - 2) = 2^(K - 1) apel-uri
+
+Astfel ar fi in mod normal, totusi stim ca multimea trebuie sa aiba maxim N
+elemente. Asa ca pentru (K + 1) va merge pana la min(2^(K - 1), 2^(N - 2)),
+2^(N - 2) pentru ca se incepe de la 2^0 apeluri si pentru ca nu luam in calcul
+dimensiunea 1 care face parte implicit din multime. Astfel complexitatea va fi:
+
+1. N - 2 < K - 1
+
+1 + 2^1 + .. + 2^(N - 2) + 2^(N - 2) + .. + 2^(N - 2) = 2^(N - 1) +
++ (K - 1 - (N - 2)) * 2^(N - 2) = 2^(N - 1) + (K - N + 1) * 2^(N - 2) =
+= 2 * 2^(N - 2) + (K - N + 1) * 2^(N - 2) = 2^(N - 2) * (K - N + 3) =>
+O(2^N * (K - N))
+
+2. N - 2 >= K - 1
+
+1 + 2^1 + 2^2 + ... + 2^(K - 1) = 2^K => O(2^K)
+
+Acum avem nevoie de complexitatea calcularii numarului de combinatii consecutive
+pentru o astfel de generare. Folosim subset sum astfel complexitatea este O(sum * n),
+unde sum este ultimul numar si n sunt numarul de elemente din multime. Ultimul
+numar am vorbit mai devreme ca este dim_max * T, iar n este T * N pentru ca se
+multiplica fiecare element din multimea initiala de T ori. Asa ca
+O(dim_max * T * T * N) = O(dim_max * T^2 * N) este complexitatea subset sum-ului.
+
+In aceasta problema totusi pentru a folosi subset sum avem nevoie de niste
+informatii prelucrate. In primul rand, dim_max care se afla printr-o parcurgere
+prin multimea initiala de dimensiuni => O(N). In al doilea rand, multiplicarea
+multimii de T de ori care va avea complexitatea O(N * T). Asa ca prelucrarea
+initiala are complexitate O(N + N * T) = O(N * (T + 1)) = O(N * T).
+
+Intr-un final parcurgem ultima linie din matricea creata pentru a afla ce
+numere pot fi obtinute din multimea de dimensiuni si implicit, prin intermediul
+unor contoare, secventa maxima de numere consecutive. Este nevoie de o singura
+astfel de parcurgere, cum sunt dim_max * T coloane => O(dim_max * T).
+
+Complexitatea per total al calculului secventei de numere consecutive este
+O(dim_max * T^2 * N) + O(N * T) + O(dim_max * T) = O(dim_max * T^2 * N)
+
+Calculul se face doar pentru generarea finala. Numarul de combinatii finale pentru
+multimea initiala de dimensiuni ar trebui sa fie combinatii de (K - 1) (fara 1)
+luate cate (N - 1), pentru simplitate o sa il scriu ca C_{K - 1}_{N - 1}. Astfel
+complexitatea tuturor calculelor de secventa va fi O(dim_max * T^2 * N * C_{K - 1}_{N - 1}).
+
+Per total algoritmul are complexitatea(se scade din complexitatea calculata initial
+combinarile pentru ultima generare):
+
+1. N - 2 < K - 1
+
+O(2^N * (K - N) - C_{K - 1}_{N - 1}) + O(dim_max * T^2 * N * C_{K - 1}_{N - 1}) =
+= O(2^N * (K - N) + C_{K - 1}_{N - 1} * (dim_max * T^2 * N - 1)) =
+= O(2^N * (K - N) + C_{K - 1}_{N - 1} * (dim_max * T^2 * N))
+
+2. N - 2 >= K - 1
+
+Analog 1. => O(2^K + C_{K - 1}_{N - 1} * (dim_max * T^2 * N))

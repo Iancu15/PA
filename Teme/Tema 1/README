@@ -1,0 +1,256 @@
+# Iancu Alexandru-Gabriel 324CD
+
+1. Crypto
+
+Problema a fost rezolvata folosind tehnica Greedy. Salvez intrarile pentru
+fiecare calculator intr-o lista de Computer ce contine costul upgrade-ului
+si capacitatea curenta de bitcoini. Apoi folosind Collections.sort o sortez
+crescator dupa capacitatea de bitcoini.
+
+Iau apoi fiecare calculator pe rand din lista sortata si calculez diferenta
+fata de urmatorul calculator din lista. Daca diferenta e mai mare decat 0
+inseamna ca trebuie sa cumpar upgrade-uri pentru calculatorul curent pana
+ajunge la capacitatea urmatorului calculator. Insa capacitatea maxima
+este reprezentata de cea mai mica capacitate a unui calculator din lista,
+asa ca salvez intr-o variabila si costul upgrade-urilor pentru calculatoarele
+precedente, pentru ca va trebui sa dau upgrade la toate pana ajung la capacitatea
+urmatorului calculator.
+
+Fac acest lucru pana se termina toata lista sau pana ajung sa nu imi permit
+sa acoper toata diferenta intre calculatorele precedente si cel urmator.
+In momentul in care nu mai imi permit sa acopar toata diferenta, folosesc
+o cautare binara intre capacitatea calculatorului curent si capacitatea
+calculatorului urmator ce cauta cu cat se poate mai exact mari capacitatea
+calculatoarelor precedente. Capacitatea maxima va fi capacitatea la care
+vor fi marite calculatorele precedente.
+
+Daca se iese din while si anume a fost buget sa fac upgrade la toate
+calculatorele pana la capacitatea ultimului calculator, atunci calculez
+cate upgrade-uri mai pot fi facute pe toate calculatoarele pentru
+a mari capacitatea. Si anume impart bugetul ramas la suma costurilor
+de upgrade a tuturor calculatoarelor si rotunjesc rezultatul in jos pentru ca
+trebuie sa upgradez de un numar intreg de ori. Capacitatea maxima va fi
+capacitatea ultimului calculator + rezultatul impartirii.
+
+La prima vedere complexitatea temporala a algoritmului este O(n) (n este
+numarul de calculatore) pentru ca se proceseaza fiecare calculator intr-un
+for ce face operatii banale de O(1). Insa mai este cazul special pentru momentul
+in care nu se poate acoperi toata capacitatea intre calculatoarele precedente
+si cel urmator, in acel moment se face o cautare binara care are complexitatea
+O(a - b), unde a este capacitatea calculatorului curent si b capacitatea
+calculatorului urmator de la acel moment. Astfel complexitatea algoritmului
+este O(n) + O(a - b) pentru ca acea cautare binara se face maxim o data.
+
+Insa inainte de algoritmul propriu-zis, trebuie sortata lista de calculatoare,
+iar sortarea folosind Collections.sort are complexitatea O(n * log n), astfel
+per total complexitatea temporala este O(n) + O(n * log n) + O(a - b) =
+O(n * log n) + O(a - b). Complexitatea spatiala este O(1) pentru ca nu
+folosim vectori si matrici aditionale(consideram complexitatea spatiala
+a unei variabile ca fiind O(1), nu O(log n), pentru simplitate).
+
+2. Stocks
+
+Problema se aseamana foarte mult cu problema rucsacului nefractionara. Daca
+n-ar fi o limita asupra maximului de pierderi, ar fi exact aceeasi problema
+in care capacitatea rucsacului e bugetul, greutatea obiectelor este costul
+actiunilor si valoarea lor este reprezentata de profitul lor. Insa avand 
+si pierderile se mai adauga o dimensiune asupra problemei.
+
+Am folosit astfel ca inspiratie rezolvarea problemei rucsacului prezentata
+la laboratorul lui Mihai Nan. Aceasta avea urmatoarea relatie de recurenta:
+
+dp[i][0] = dp[0][g] = 0, oricare ar fi i si g din multimile aferente
+dp[i][g] = max(dp[i - 1][g], dp[i - 1][g - weight(object)] + profit(object)), pentru i > 0
+    , unde g >= weight(object) pentru a se intra pe cazul 2
+
+In situatia noastra mai avem si pierderi, asa ca o matrice cu 2 dimensiune nu
+ne ajuta. Astfel ar trebui sa folosim matrice cu 3 dimensiuni si anume
+[iteratia][costul][pierderile]. Totusi la iteratia i se folosesc informatii
+doar de la iteratia i - 1, asa ca nu trebuie sa stocam toata matricea 3d.
+Putem sa ne folosim doar de 2 matrici [costul][pierderile], una care sa
+salveze informatiile de la iteratia precedenta si alta pe care o vom umple
+cu informatiile iteratiei curente.
+
+Relatia de recurenta a problemei noastre va fi(i e iteratia, c costul, l loss-ul):
+dp[i][0][l] = dp[0][c][l] = 0, oricare ar fi i, c si l din multimile aferente
+(dp[i][c][0] nu e neaparat 0, pentru ca putem avea actiuni care in cel mai rau
+caz raman la valoarea curenta)
+dp[i][c][l] = max(dp[i - 1][c][l], dp[i - 1][c - cost(stock)][l - loss(stock)] + profit(stock)),
+pentru c >= cost(stock), l >= loss(stock) pentru a se intra pe cazul 2
+
+Se verifica daca adaugand stock-ul iteratiei curente(i) la stock-urile adaugate pentru
+a avea costul c - cost(stock) si loss-ul l - loss(stock) se ajunge la un profit mai mare
+fata de ignorarea stock-ului pentru c-ul si l-ul curent. Daca da atunci se actualizeaza
+cu noul profit, daca nu e lasat in pace. In programul nostru se face acest lucru pentru
+toate combinatiile de c si l pentru iteratia curenta.
+
+Complexitatea temporala a algoritmului este O(n * (b + 1) * (l + 1)) = O(n * b * l), unde n
+este numarul de actiuni, b este bugetul alocat si l este pierderea maxima acceptata. Se 
+observa foarte usor pentru ca algoritmul e reprezentat de 3 for-uri imbricate, primul 
+trecand prin toate actiunile, al doilea pentru actiunea curenta trece prin toate costurile
+posibile de la 0 la b(b + 1 iteratii), iar al treilea pentru costul curent trece prin toate
+pierderile posibile de la 0 la l(l + 1) iteratii. Complexitatea spatiala este 
+theta(2 * (b + 1) * (l + 1)) = theta(b * l) pentru ca creez 2 matrici de dimensiune
+(b + 1) * (l + 1) fiecare.
+
+3. Valley (Am incercat sa scriu mai pe scurt ca se cam lungea README-ul, am
+compensat cu comentarii in cod)
+
+Am rezolvat problema folosind programare dinamica. Ideea principala a fost sa iau
+un cursor care trece de la stanga la dreapta prin toate centrele posibile si anume
+pentru n varfuri numerotate de la 1 la n, posibilele centre sunt varfurile de la
+2 la (n - 1). Pentru fiecare centru trebuia sa am prefix-ul si sufix-ul calculat,
+insa calculand de fiecare data tot sufix-ul si tot prefix-ul dura mult timp.
+
+Asa ca in loc sa fac asta, am gandit ca mai bine calculez sufixele si prefixele
+incremental. Astfel intai am calculat incremental sufixele pentru fiecare centru
+posibil mergand de la final la inceput. Apoi am luat din nou la mana centrele insa
+de aceasta data mergand de la inceput la final pentru a calcula incremental prefixele.
+Cum deja la a doua trecere stiam suma cumulata pentru sufixe, puteam sa sa calculez
+in iteratia respectiva suma totala dintre orele pentru sapare la sufixe si orele
+pentru sapare la prefixe. Tineam minte, in timp ce calculam si prefixele,
+minimul pana la iteratia precedenta, astfel la finalul parcurgerii aveam deja
+calculat minimul pentru intregul vector.
+
+Fac 2 parcurgeri prin toate centrele posibile care sunt in numar de (n - 2) (se exclude
+primul si ultimul varf) asa ca complexitatea temporala este O(2 * (n - 2)) = O(n), unde
+n e reprezentat de numarul de varfuri. Complexitatea spatiala este theta(2 * n) = theta(n)
+pentru ca folosesc 2 vectori de dimensiune n, unul in care retin cumulul de ore la sufixe
+pentru fiecare centru si altul in care retin inaltimea varfurilor pentru sufix-ul de lungime
+maxima.
+
+4. Ridge
+
+Rezolvarea este un algoritm de tip Greedy pentru ca n-am avut inspiratie pentru o relatie
+de recurenta pentru o rezolvare tip programare dinamica. Algoritmul ignora elementele din
+vector pana ajunge la un sir de duplicate. In acel moment pentru primul duplicat din sir
+verifica daca saparea acestuia va duce la un lant de sapari (spre ex. daca sapam 5 din sirul 
+1 2 3 4 5, va trebui sa sapam tot sirul pentru a nu avea duplicate vecine). De asemenea
+mai ia in calcul si daca e mai ieftin sa opresti prematur saparea intregului sir prin
+spargerea a 2 unitati in loc de 1(in ex. daca spargem 5 de 2 ori sau 5 si 4 de ori s.a.m.d.
+nu vom avea duplicate vecine). Acelasi lucru se intampla si pentru ultimul duplicat din
+sir, doar ca in cazul lui sirul va fi unul descrescator.
+
+Singurul mod prin care poti sa scapi de duplicate vecine intr-un sir cu mai mult de 3
+varfuri este sa sapi din 2 in 2, astfel fiecare varf va avea fie un varf vecin cu o
+unitate mai mare, fie unul cu o unitate mai mica. Asa ca sunt 2 cazuri, fie incepi
+cu primul element si sapi din 2 in 2 pana la final, fie incepi cu al 2-lea. Daca incepi
+cu primul se adauga si costul spargerii sirului crescator. Sirul descrescator se adauga
+la caz in functie de paritatea lungimii sirului.
+
+Problema cu aceasta metoda Greedy este ca face optimul local pentru fiecare sir duplicat
+fara sa ii pese cum alegerea cazului 1 sau 2 va schimba costul pentru urmatorul sir
+duplicat(mai bine zis alegerea cazului in care se afla sirul descrescator). Astfel 
+mi-am dat seama ca problema asta nu a fost facuta sa fie realizata cu greedy si ca
+m-am afundat deja prea mult ca sa continui. Backtracking imi vinise natural ca idee
+pentru rezolvarea algoritmului, insa era cam ineficient si nu eram destul de familiar
+cu grafurile de restrictii pentru a-l face eficient(in situatia noastra toate elemente
+din vector sunt restrictionate sa fie diferite de cei 2 vecini, asa ca ar fi fost
+un graf de restricitii relativ simplu de rezolvat daca stiai conceptele).
+
+5. Trigigel (nu prea am putut sa scurtez ca erau multe de explicat)
+
+Initial rezolvarea problemei a fost gandita folosind programare dinamica. Modul de rezolvare
+era parcurgerea sirului de la final spre inceput si stocam la fiecare cifra numarul de combinatii
+posibile pentru cifra respectiva. Exemplu:
+
+ 0  1  2  3  4  5  6  7  8  9  10  <- indexi
+ 0  1  2  0  1  2  0  1  2  0  1   <- sir
+[59 40 27 18 12 8  5  3  2  1  0]  <- vector de combinatii(notat v)
+
+In calcularea vectorului s-au ignorat sirurile de 1 cifra, aceastea adaugandu-se la final.
+Astfel ultima cifra are 0 combinatii posibile. Calculele pentru urmatoarele cifre:
+
+- 0-ul de la pozitia 9 are combinatia cu 1 si astfel are v[10] + 1 combinatii
+- 2-ul de pe pozitia 8 are toate combinatiile urmatoarei cifre si de asemenea
+combinatia doar cu cifra respectiva ({2 0}) asa ca v[9] + 1 = 2
+- 1-ul de pe pozitia 7 are v[8] + 1 la care se adauga toate combinatiile lui 1
+de pe pozitia 10 pe care si le poate insusi pentru el insusi pentru ca sunt
+asezate dupa el asa ca per total este v[8] + v[10] + 1 = 3
+- 0-ul de pe pozitia 6 va avea astfel v[7] + v[9] + 1 = 5
+- 2-ul de pe pozitia 5 va avea v[6] + v[8] + 1 = 5 + 2 + 1 = 8
+- s.a.m.d.
+
+Rezultatul este astfel suma tuturor combinatiilor deci 0 + 1 + .. + 40 + 59 = 175
+la care se adauga toate combinatiile de 1 cifra si anume 11 pentru ca sunt
+11 cifre => 175 + 11 = 186
+
+Relatia de recurenta este astfel:
+v[n] = 0, pentru m = lungimea sirului - 1
+v[n - 1] = 1
+v[n - 2] = 2
+v[i] = v[i + 1] + v[i + 3] + 1, pentru oricare i de la 0 la n - 3
+
+Din relatia de recurenta se observa ca se poate inlocui de fapt vectorul
+cu doar 3 variabile pentru ca trebuie sa tinem minte doar combinatiile de cifre
+de la (i + 1) la (i + 3) pentru a afla combinatiile pentru i, suma tuturor
+combinatiilor putand fi stocate intr-o alta variabila.
+
+Cu metoda cu programare dinamica imi treceau doar primele 10 teste pentru ca
+restul picau la timp. Cum procesam fiecare cifra din sir, algoritmul avea
+complexitate O(n), unde n este lungimea sirului. Daca O(n) era prea incet
+inseamna ca aveam nevoie de un algoritm de complexitate O(log n). Pentru asta
+m-am folosit de metoda matriceala prezentata la laboratorul lui Mihai Nan. Insa o
+problema era ca problema cu garduri prezentata calcula al n-lea numar dat 
+de relatia de recurenta, dar in problema mea aveam nevoie de suma tuturor
+numerelor din relatia de recurenta pana la al n-lea. Ce m-a ajutat in gasirea
+unui mod de a rescrie suma a fost metoda 2 de calculare a sumei numerelor
+fibonacci gasita aici https://www.geeksforgeeks.org/sum-fibonacci-numbers/.
+
+Am adaptat-o la problema mea si asa am ajuns la urmatoarea rezolvare:
+F(n) = F(n + 1) + F(n - 3) + 1
+F(n - 1) = F(n) - F(n - 3) - 1
+F(n - 2) = F(n - 1) - F(n - 4) - 1
+F(n - 3) = F(n - 2) -  F(n - 5) - 1
+F(n - 4) = F(n - 3) - F(n - 6) - 1
+...
+F(5) = F(6) - F(3) - 1
+F(4) = F(5) - F(2) - 1
+F(3) = F(4) - F(1) - 1
+F(2) = F(3) - F(0) - 1
+F(1) = 1
+F(0) = 0
+--------------------------(+)
+F(0) + F(1) + ... + F(n - 1) = F(n) + F(n - 1) + F(n - 2) - F(2) - F(1) - F(0) + 1 + 0 - (n - 2)
+Sum(n - 1) = F(n) + F(n - 1) + F(n - 2) - 2 - 1 - 0 + 1 + 0 - (n - 2)
+Sum(n - 1) = F(n) + F(n - 1) + F(n - 2) - n
+Sum(n) = F(n + 1) + F(n) + F(n - 1) - n
+
+La suma in algoritmul original adaugam si un n ce reprezenta combinatiile de
+1 cifra => Sum(n) = F(n + 1) + F(n) + F(n - 1) + n - n = F(n + 1) + F(n) + F(n - 1)
+
+Astfel am rescris suma astfel incat sa fie nevoie doar de ultimele 3 numere
+numere din iteratie. Asa ca o sa am nevoie doar de G(n), unde
+G(i) = [F(i - 2) F(i - 1) F(i)]. Matricea M in situatia noastra este:
+
+M =
+[ 0 0 1
+  1 0 0
+  0 1 1 ]
+
+=> G(i + 1) = G(i) * M + [0 0 1], adaug [0 0 1] pentru ca mai aveam un + 1 in relatia
+de recurenta
+
+Acel [0 0 1] ma cam sacaia totusi, asa ca a trebuit sa caut o alta relatie de recurenta
+pentru G(i). Intr-un final am dat peste o progresie geometrica:
+Precizare - am mers pana la G(2) pentru ca ala e primul G stiut si anume
+[F(0) F(1) F(2)] = [0 1 2]
+
+G(N) = G(2) * M^(N - 2) + [0 0 1] + [0 0 1] * M + [0 0 1] * M^2 + ... + [0 0 1] * M^(N - 3)
+[0 0 1] + [0 0 1] * M + [0 0 1] * M^2 + ... + [0 0 1] * M^(N - 3) =
+= G(2) * M^(N - 2) + [0 0 1] * (M^(N - 2) - I) * (M - I)^-1
+
+Pentru progresia geomtrica am folosit formula uzuala pentru numere. Diferenta e ca
+am inlocuit 1 cu matricea identitate si am rescris impartirea ca inmultire cu termen
+la puterea -1.
+
+(M - I)^-1 l-am calculat in prealabil pentru ca o constanta:
+[ 0 1 1
+  0 0 1
+  1 1 1 ]
+
+Pentru ridicarea matricii M la puterea (N - 2) ma folosesc de metoda prezentata
+in cadrul laboratorului si anume calculez M^(N/2) sau M^((N-1)/2) in functie de
+paritatea lui N. Complexitatea acestei ridicari la putere fiind de O(log n).
+Complexitatea spatiala este O(1) pentru ca ma folosesc de matrici de dimensiune
+fixa 3 x 3 si de vectori de dimensiune 1 x 3.
